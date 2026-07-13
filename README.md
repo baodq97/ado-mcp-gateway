@@ -1,5 +1,7 @@
 # ado-mcp-gateway
 
+[![build-and-push](https://github.com/baodq97/ado-mcp-gateway/actions/workflows/docker.yml/badge.svg)](https://github.com/baodq97/ado-mcp-gateway/actions/workflows/docker.yml)
+
 A self-hosted **remote MCP server for Azure DevOps** that works with any
 OAuth-capable MCP client — Claude Code, Claude Desktop, ChatGPT, custom
 agents — today.
@@ -102,15 +104,22 @@ set -a; source .env; set +a
 uv run python server.py
 ```
 
-**Docker:**
+**Docker** — pull the prebuilt image (published to GHCR by CI on every push to
+`main`):
+
+```bash
+docker run -p 8090:8090 --env-file .env ghcr.io/baodq97/ado-mcp-gateway:latest
+```
+
+Or build it yourself:
 
 ```bash
 docker build -t ado-mcp-gateway .
 docker run -p 8090:8090 --env-file .env ado-mcp-gateway
 ```
 
-The image bakes `@azure-devops/mcp` and a Node runtime, so no per-request `npx`
-download.
+The image bakes `@azure-devops/mcp` and a Node runtime, so there is no
+per-request `npx` download.
 
 ### 4. Connect a client
 
