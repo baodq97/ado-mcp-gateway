@@ -1,0 +1,10 @@
+[project]
+name = "ado-mcp-gateway"
+version = "0.1.0"
+description = "Self-hosted remote MCP gateway for Azure DevOps - OAuth 2.1 simulated DCR over a static Entra app, per-user OBO"
+requires-python = ">=3.12"
+dependencies = [
+    "aiohttp>=3.14.1",
+    "azure-identity>=1.25.3",
+    "fastmcp>=3.4.4",
+]
